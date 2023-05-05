@@ -1,2 +1,4 @@
 # Projects
-Personal and Academic projects 
+Personal and Academic projects
+
+Honors and Masters Projects
