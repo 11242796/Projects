@@ -1,0 +1,81 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\obj\\Debug\\net7.0-android\\scopedcss\\bundle\\Weather.styles.css",
+      "PackagePath": "staticwebassets\\Weather.styles.css"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\README.md",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\11242796\\Projects\\WeatherApp\\Weather\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-android\\staticwebassets\\msbuild.Weather.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-android\\staticwebassets\\msbuild.build.Weather.props",
+      "PackagePath": "build\\Weather.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-android\\staticwebassets\\msbuild.buildMultiTargeting.Weather.props",
+      "PackagePath": "buildMultiTargeting\\Weather.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-android\\staticwebassets\\msbuild.buildTransitive.Weather.props",
+      "PackagePath": "buildTransitive\\Weather.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

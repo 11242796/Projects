@@ -1,0 +1,44 @@
+﻿@page "/details/{date}"
+@using System.Net.Http
+@using System.Net.Http.Json
+@inject HttpClient HttpClient
+@inject NavigationManager NavigationManager
+
+<h3>Weather Details</h3>
+
+@if (WeatherForecast != null)
+{
+    <p>Date: @WeatherForecast.Date</p>
+    <p>Min Temperature: @WeatherForecast.MinTemperatureC</p>
+    <p>Max Temperature: @WeatherForecast.MaxTemperatureC</p>
+    <button class="btn btn-primary" @onclick="GoBack">Go Back</button>
+}
+else
+{
+    <p>Loading weather details...</p>
+}
+
+@code {
+    private WeatherForecastItem WeatherForecast;
+
+    [Parameter]
+    public string Date { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var weatherForecasts = await HttpClient.GetFromJsonAsync<List<WeatherForecastItem>>("https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7");
+        WeatherForecast = weatherForecasts.FirstOrDefault(f => f.Date == Date);
+    }
+
+    private void GoBack()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+    public class WeatherForecastItem
+    {
+        public string Date { get; set; }
+        public double MinTemperatureC { get; set; }
+        public double MaxTemperatureC { get; set; }
+    }
+}

@@ -1,0 +1,51 @@
+﻿@page "/"
+@using System.Net.Http
+@using System.Net.Http.Json
+@using Microsoft.AspNetCore.Components.Routing
+
+@inject HttpClient HttpClient
+
+<h3>Weather Forecast</h3>
+
+@if (WeatherForecasts != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Min Temperature</th>
+                <th>Max Temperature</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in WeatherForecasts)
+            {
+                <tr>
+                    <td><a href="/details/@forecast.Date">@forecast.Date</a></td>
+                    <td>@forecast.MinTemperature</td>
+                    <td>@forecast.MaxTemperature</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Loading weather forecast...</p>
+}
+
+@code {
+    private List<WeatherForecastItem> WeatherForecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        WeatherForecasts = await HttpClient.GetFromJsonAsync<List<WeatherForecastItem>>("https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7");
+    }
+
+    public class WeatherForecastItem
+    {
+        public string Date { get; set; }
+        public double MinTemperature { get; set; }
+        public double MaxTemperature { get; set; }
+    }
+}
