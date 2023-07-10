@@ -16,17 +16,42 @@ namespace Weather.Data
 
         public async Task<WeatherForecast[]> GetForecastAsync(DateTime startDate)
         {
-            string apiUrl = "https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7";
-            var response = await _httpClient.GetFromJsonAsync<WeatherApiResponse>(apiUrl);
-
-            // Extract the necessary data from the response and create an array of WeatherForecast objects
-            // Adjust this logic based on the structure of the API response
-            return response?.Forecast?.ForecastDay?.Select(forecastDay => new WeatherForecast
+            try
             {
-                Date = forecastDay.Date,
-                TemperatureC = (int)forecastDay.Day?.AvgTemperatureC,
-                Summary = forecastDay.Day?.Condition?.Text ?? string.Empty
-            }).ToArray();
+                string apiUrl = "https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7";
+                var response = await _httpClient.GetFromJsonAsync<WeatherApiResponse>(apiUrl);
+
+                if (response?.Forecast?.ForecastDay != null)
+                {
+                    return ConvertToWeatherForecasts(response.Forecast.ForecastDay);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle error scenario, log the error, or throw an exception
+                Console.WriteLine($"Error retrieving weather forecast: {ex.Message}");
+            }
+
+            return Array.Empty<WeatherForecast>();
+        }
+
+        private WeatherForecast[] ConvertToWeatherForecasts(ForecastDay[] forecastDays)
+        {
+            var weatherForecasts = new WeatherForecast[forecastDays.Length];
+
+            for (int i = 0; i < forecastDays.Length; i++)
+            {
+                var forecastDay = forecastDays[i];
+
+                weatherForecasts[i] = new WeatherForecast
+                {
+                    Date = forecastDay.Date,
+                    TemperatureC = (int)forecastDay.Day?.AvgTemperatureC,
+                    Summary = forecastDay.Day?.Condition?.Text ?? string.Empty
+                };
+            }
+
+            return weatherForecasts;
         }
     }
 

@@ -12,6 +12,10 @@
 {
     <p><em>Loading...</em></p>
 }
+else if (forecasts.Length == 0)
+{
+    <p>No weather forecast available.</p>
+}
 else
 {
     <table class="table">
@@ -42,6 +46,13 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        try
+        {
+            forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        }
+        catch (Exception)
+        {
+            // Handle error scenario
+        }
     }
 }

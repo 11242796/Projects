@@ -29,25 +29,25 @@
     <AppXManifest Include="C:\11242796\Projects\WeatherApp\Weather\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2023-07-08T09:07:02.978</Modified>
+      <Modified>2023-07-10T17:59:06.190</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\11242796\Projects\WeatherApp\Weather\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2023-07-08T09:05:23.683</Modified>
+      <Modified>2023-07-10T17:57:56.838</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\11242796\Projects\WeatherApp\Weather\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Weather.runtimeconfig.json">
       <PackagePath>Weather.runtimeconfig.json</PackagePath>
-      <Modified>2023-07-08T09:05:22.664</Modified>
+      <Modified>2023-07-09T20:09:20.368</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\11242796\Projects\WeatherApp\Weather\bin\Debug\net7.0-windows10.0.19041.0\win10-x64\Weather.dll">
       <PackagePath>Weather.dll</PackagePath>
-      <Modified>2023-07-08T09:05:18.845</Modified>
+      <Modified>2023-07-10T17:57:54.516</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\11242796\Projects\WeatherApp\Weather\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\apphost.exe">
       <PackagePath>Weather.exe</PackagePath>
-      <Modified>2023-07-08T09:05:18.914</Modified>
+      <Modified>2023-07-10T17:57:54.552</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\miehl\.nuget\packages\microsoft.netcore.app.runtime.win-x64\7.0.7\runtimes\win-x64\lib\net7.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -987,7 +987,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\11242796\Projects\WeatherApp\Weather\obj\Debug\net7.0-windows10.0.19041.0\win10-x64\Weather.deps.json">
       <PackagePath>Weather.deps.json</PackagePath>
-      <Modified>2023-07-08T09:07:02.668</Modified>
+      <Modified>2023-07-10T17:59:05.989</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files\dotnet\packs\Microsoft.Maui.Controls.Ref.win\7.0.86\ref\net7.0-windows10.0.19041\Microsoft.Maui.Controls.Compatibility.pri">
       <PackagePath>Microsoft.Maui.Controls.Compatibility.pri</PackagePath>

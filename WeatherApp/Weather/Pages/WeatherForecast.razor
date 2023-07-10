@@ -21,9 +21,9 @@
             @foreach (var forecast in WeatherForecasts)
             {
                 <tr>
-                    <td><a href="/details/@forecast.Date">@forecast.Date</a></td>
-                    <td>@forecast.MinTemperature</td>
-                    <td>@forecast.MaxTemperature</td>
+                    <td><a href="/details/@forecast.Date.ToShortDateString()">@forecast.Date.ToShortDateString()</a></td>
+                    <td>@($"{forecast.MinTemperature} °C")</td>
+                    <td>@($"{forecast.MaxTemperature} °C")</td>
                 </tr>
             }
         </tbody>
@@ -35,16 +35,23 @@ else
 }
 
 @code {
-    private List<WeatherForecastItem> WeatherForecasts;
+    private WeatherForecastItem[] WeatherForecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        WeatherForecasts = await HttpClient.GetFromJsonAsync<List<WeatherForecastItem>>("https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7");
+        try
+        {
+            WeatherForecasts = await HttpClient.GetFromJsonAsync<WeatherForecastItem[]>("https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7");
+        }
+        catch (Exception)
+        {
+            // Handle error scenario
+        }
     }
 
     public class WeatherForecastItem
     {
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public double MinTemperature { get; set; }
         public double MaxTemperature { get; set; }
     }

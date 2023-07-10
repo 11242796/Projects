@@ -2,7 +2,9 @@
 using Microsoft.Maui.Controls;
 using Microsoft.Extensions.DependencyInjection;
 using Weather.Data;
+using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Weather
 {
@@ -24,10 +26,14 @@ namespace Weather
             var weatherForecastService = serviceProvider.GetService<WeatherForecastService>();
 
             var mainPage = new MainPage();
-            mainPage.BindingContext = new MainPageViewModel(weatherForecastService);
+            var mainPageViewModel = new MainPageViewModel(weatherForecastService);
+            mainPage.BindingContext = mainPageViewModel;
 
             var navigationPage = new NavigationPage(mainPage);
             MainPage = navigationPage;
+
+            // Load the forecasts when the app starts
+            mainPageViewModel.LoadForecastsAsync();
         }
     }
 
@@ -35,6 +41,7 @@ namespace Weather
     {
         private WeatherForecastService _weatherForecastService;
         private WeatherForecast[] _forecasts;
+        private bool _isLoading;
 
         public WeatherForecast[] Forecasts
         {
@@ -46,15 +53,37 @@ namespace Weather
             }
         }
 
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set
+            {
+                _isLoading = value;
+                OnPropertyChanged();
+            }
+        }
+
         public MainPageViewModel(WeatherForecastService weatherForecastService)
         {
             _weatherForecastService = weatherForecastService;
-            LoadForecasts();
         }
 
-        private async void LoadForecasts()
+        public async Task LoadForecastsAsync()
         {
-            Forecasts = await _weatherForecastService.GetForecastAsync(DateTime.Now);
+            try
+            {
+                IsLoading = true;
+                Forecasts = await _weatherForecastService.GetForecastAsync(DateTime.Now);
+            }
+            catch (Exception ex)
+            {
+                // Handle error scenario, log the error, or display an error message
+                Console.WriteLine($"Error loading forecasts: {ex.Message}");
+            }
+            finally
+            {
+                IsLoading = false;
+            }
         }
     }
 }

@@ -11,23 +11,42 @@
     <p>Date: @WeatherForecast.Date</p>
     <p>Min Temperature: @WeatherForecast.MinTemperatureC</p>
     <p>Max Temperature: @WeatherForecast.MaxTemperatureC</p>
+    <p>Humidity: @WeatherForecast.Humidity</p>
+    <p>Wind Speed: @WeatherForecast.WindSpeed</p>
+    <p>Weather Condition: @WeatherForecast.Condition</p>
     <button class="btn btn-primary" @onclick="GoBack">Go Back</button>
+}
+else if (IsLoading)
+{
+    <p>Loading weather details...</p>
 }
 else
 {
-    <p>Loading weather details...</p>
+    <p>No weather details found for the selected date.</p>
 }
 
 @code {
     private WeatherForecastItem WeatherForecast;
+    private bool IsLoading = true;
 
     [Parameter]
     public string Date { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var weatherForecasts = await HttpClient.GetFromJsonAsync<List<WeatherForecastItem>>("https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7");
-        WeatherForecast = weatherForecasts.FirstOrDefault(f => f.Date == Date);
+        try
+        {
+            var weatherForecasts = await HttpClient.GetFromJsonAsync<WeatherForecastRoot>("https://api.weatherapi.com/v1/forecast.json?key=0a8b438b34msh1f611f0922d153dp19e7c6jsn28a65a432c99&q=London&days=7");
+            WeatherForecast = weatherForecasts.Forecast.FirstOrDefault(f => f.Date == Date);
+        }
+        catch (Exception)
+        {
+            // Handle error scenario
+        }
+        finally
+        {
+            IsLoading = false;
+        }
     }
 
     private void GoBack()
@@ -35,10 +54,18 @@ else
         NavigationManager.NavigateTo("/");
     }
 
+    public class WeatherForecastRoot
+    {
+        public List<WeatherForecastItem> Forecast { get; set; }
+    }
+
     public class WeatherForecastItem
     {
         public string Date { get; set; }
         public double MinTemperatureC { get; set; }
         public double MaxTemperatureC { get; set; }
+        public int Humidity { get; set; }
+        public double WindSpeed { get; set; }
+        public string Condition { get; set; }
     }
 }
